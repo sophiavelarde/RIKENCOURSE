@@ -73,6 +73,7 @@ choose(100,2)
 #6. And how many ways to arrange 100 genes in triples?
  choose(100,3)
 
+
 ```
 ```{r}
 
@@ -99,6 +100,17 @@ CO2 %>%
     median_uptake = median(uptake)
   )
 #4. [Optional] In the “airway” example data from Bioconductor, how many genes are expressed in each sample? How many genes are not expressed in any sample?
+install.packages("BiocManager")
+BiocManager::install("airway")
+
+library(airway)
+data("airway")
+
+conteos <- assay(airway)
+colSums(conteos > 0)
+
+#no express
+sum(rowSums(conteos) == 0)
 ```
 
 ```{r}
